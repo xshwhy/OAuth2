@@ -1,0 +1,42 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /uaa
+
+
+spring:
+  application:
+    name: security-oauth2
+  datasource:
+    url: jdbc:mysql://120.26.142.247:3306/user_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    client:
+      ipAddress: 127.0.0.1
+
+
+eureka:
+  instance:
+    prefer-ip-address: false
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    hostname: ${spring.cloud.client.ipAddress}
+  client:
+    serviceUrl:
+      #eurekaServers
+      defaultZone: http://127.0.0.1:8761/eureka
+
+# mybatis-plus
+mybatis-plus:
+  # MyBatis
+  type-aliases-package: com.iotmars.entity
+  # MyBatis Mapper
+  mapper-locations: classpath:/mapper/*Mapper.xml
+
+
+
+
+
